@@ -178,3 +178,7 @@ input/
 .config/
 config.json
 examples/
+
+# GitHub
+!.github/
+!.github/**

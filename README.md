@@ -172,6 +172,29 @@ To see information about building for all platforms:
 python build.py --info
 ```
 
+#### Automated builds with GitHub Actions
+
+This repository includes GitHub Actions workflows to automatically build packages for Windows, macOS, and Linux when:
+- A tag is pushed (e.g., `v1.0.0`)
+- Code is pushed to the main branch
+- A pull request is made to the main branch
+- The workflow is manually triggered
+
+To create a new release with pre-built packages:
+
+1. Tag your release with a version number:
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+2. GitHub Actions will automatically:
+   - Build packages for all three platforms
+   - Create a new GitHub Release with the tagged version
+   - Attach the built executables to the release
+
+You can also manually trigger a build through the GitHub Actions tab in your repository.
+
 #### Building on Multiple Platforms
 
 To create executables for all platforms, you need to:
