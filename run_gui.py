@@ -23,7 +23,7 @@ try:
     main()
 except ImportError as e:
     tk.Tk().withdraw()  # Hide the root window
-    messagebox.showerror("Import Error", f"Error importing modules: {str(e)}\n\nPlease make sure all dependencies are installed:\npip install -r requirements.txt")
+    messagebox.showerror("Import Error", f"Error importing modules: {str(e)}\nPlease make sure all dependencies are installed:\npip install -r requirements.txt")
 except Exception as e:
     tk.Tk().withdraw()  # Hide the root window
     messagebox.showerror("Error", f"An error occurred: {str(e)}") 
