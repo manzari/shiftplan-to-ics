@@ -82,7 +82,19 @@ jobs:
         if: matrix.os == 'macos-latest'
         run: |
           cd dist
-          zip -r "ShiftPlanToICS-macOS.zip" "ShiftPlan to ICS.app"
+          echo "Listing contents of dist directory:"
+          ls -la
+          
+          # Check for .app files with different possible names
+          APP_FILE=$(find . -maxdepth 1 -name "*.app" | head -n 1)
+          
+          if [ -n "$APP_FILE" ]; then
+            echo "Found app bundle: $APP_FILE"
+            zip -r "ShiftPlanToICS-macOS.zip" "$APP_FILE"
+          else
+            echo "No .app bundle found, zipping all contents of dist directory"
+            zip -r "ShiftPlanToICS-macOS.zip" .
+          fi
         shell: bash
 
       # Upload built artifacts
