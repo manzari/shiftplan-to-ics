@@ -2,11 +2,28 @@
 
 A Python tool to convert text-based schedules (shift plans) in German format into ICS (iCalendar) files that can be imported into calendar applications like Google Calendar, Apple Calendar, Outlook, etc.
 
-## Notes
+## Installation for users
 
-- OCR error handling has been removed from this version. Input files should use standard formatting without OCR errors.
+1. Go to the [Releases](https://github.com/your-username/shiftplan-to-ics/releases) page of this repository.
 
-## Installation
+2. Download the appropriate file for your operating system from the latest release:
+   - **Windows**: Download `shiftplan_to_ics.exe`
+   - **macOS**: Download `ShiftPlan.to.ICS.app.zip`, extract it, and move the app to your Applications folder
+   - **Linux**: Download `shiftplan_to_ics`, make it executable with `chmod +x shiftplan_to_ics`, and run it
+
+3. **Optional**: For OCR functionality (reading shift plans from images):
+   - **Windows**: Download and install [Tesseract OCR](https://github.com/UB-Mannheim/tesseract/wiki)
+   - **macOS**: Install via Homebrew: `brew install tesseract`
+   - **Linux**: Install via package manager: `sudo apt-get install tesseract-ocr` (Ubuntu/Debian)
+
+4. Launch the application:
+   - **Windows**: Double-click on `shiftplan_to_ics.exe`
+   - **macOS**: Open `ShiftPlan to ICS.app` from your Applications folder
+   - **Linux**: Double-click the executable or run it from terminal: `./shiftplan_to_ics`
+
+5. That's it! Use the GUI to select your shift plan file, configure options, and convert it to an ICS file that can be imported into your calendar application.
+
+## Installation for developers
 
 1. Clone this repository:
 ```bash
@@ -248,7 +265,3 @@ Do. 01.05 00:00 08:00 Sarah
 ## Handling of shifts that span midnight
 
 The tool automatically detects shifts that span across midnight (when end time is earlier than start time) and creates calendar events that span to the next day.
-
-## License
-
-MIT
