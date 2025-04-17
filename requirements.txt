@@ -3,7 +3,7 @@ python-dateutil==2.8.2
 regex==2023.10.3
 pytz==2023.3  # Required for timezone support
 pytesseract==0.3.10  # Optional: For OCR on image files
-Pillow>=10.2.0  # Optional: Required for image processing
+Pillow>=10.3.0  # Optional: Required for image processing
 tkinterdnd2>=0.3.0   # Optional: For drag and drop functionality in the GUI
 caldav==1.3.5  # Required for Nextcloud calendar integration
 requests==2.31.0  # Required for HTTP requests to Nextcloud
