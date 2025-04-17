@@ -96,6 +96,42 @@ jobs:
             zip -r "ShiftPlanToICS-macOS.zip" .
           fi
         shell: bash
+      
+      # Create a ZIP archive for Linux binaries to keep consistent naming
+      - name: Create ZIP archive for Linux
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          cd dist
+          echo "Listing contents of dist directory:"
+          ls -la
+          
+          # Check if there are executables
+          if [ -f "shiftplan_to_ics" ]; then
+            echo "Found Linux executable"
+            zip -r "ShiftPlanToICS-Linux.zip" *
+          else
+            echo "Zipping all contents of dist directory"
+            zip -r "ShiftPlanToICS-Linux.zip" .
+          fi
+        shell: bash
+      
+      # Create a ZIP archive for Windows binaries to keep consistent naming
+      - name: Create ZIP archive for Windows
+        if: matrix.os == 'windows-latest'
+        run: |
+          cd dist
+          echo "Listing contents of dist directory:"
+          dir
+          
+          # Zip all exe files
+          Compress-Archive -Path *.exe -DestinationPath "ShiftPlanToICS-Windows.zip" -Force
+          
+          if (Test-Path "ShiftPlanToICS-Windows.zip") {
+            echo "Created Windows zip archive"
+          } else {
+            echo "Creating zip with all contents of dist"
+            Compress-Archive -Path * -DestinationPath "ShiftPlanToICS-Windows.zip" -Force
+          }
 
       # Upload built artifacts
       - name: Upload artifacts
@@ -124,6 +160,21 @@ jobs:
       
       - name: List artifacts
         run: ls -R artifacts
+        
+      # Create release assets directory with uniform naming
+      - name: Prepare release assets
+        run: |
+          mkdir -p release-assets
+          
+          # Copy ZIP files with consistent naming
+          find artifacts -name "ShiftPlanToICS-*.zip" -exec cp {} release-assets/ \;
+          
+          # Also copy any individual executables (as backup)
+          find artifacts -name "*.exe" -exec cp {} release-assets/ \;
+          find artifacts -name "shiftplan_to_ics" -exec cp {} release-assets/ \;
+          
+          echo "Release assets contents:"
+          ls -la release-assets
       
       # Create a release
       - name: Create Release
@@ -134,6 +185,4 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            artifacts/shiftplan-to-ics-windows/dist/*.exe
-            artifacts/shiftplan-to-ics-linux/dist/shiftplan_to_ics
-            artifacts/shiftplan-to-ics-macos/dist/ShiftPlanToICS-macOS.zip 
+            release-assets/* 
