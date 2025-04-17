@@ -2,6 +2,8 @@
 
 A Python tool to convert text-based schedules (shift plans) in German format into ICS (iCalendar) files that can be imported into calendar applications like Google Calendar, Apple Calendar, Outlook, etc.
 
+![Screenshot](screenshot.png "Screenshot")
+
 ## Installation for users
 
 1. Go to the [Releases](https://github.com/your-username/shiftplan-to-ics/releases) page of this repository.
