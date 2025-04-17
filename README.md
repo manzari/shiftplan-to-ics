@@ -47,9 +47,6 @@ pip install -r requirements.txt
      - Ubuntu/Debian: `sudo apt-get install tesseract-ocr`
      - macOS: `brew install tesseract`
      - Windows: Download and install from [GitHub](https://github.com/UB-Mannheim/tesseract/wiki)
-   - Make sure the additional Python dependencies are installed:
-```bash
-```
    - The tool uses Tesseract's page segmentation mode 6 (--psm 6) which works best for shift plan images by treating them as a single block of text
 
 5. For drag and drop functionality in the GUI (optional):
@@ -57,9 +54,6 @@ pip install -r requirements.txt
      - Ubuntu/Debian: `sudo apt-get install python3-tk tk-tktreectrl`
      - macOS: `brew install tkdnd`
      - Windows: Download and install from [GitHub](https://github.com/petasis/tkdnd)
-   - For Python binding, install the package:
-```bash
-```
 
 ## Usage
 
