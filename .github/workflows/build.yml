@@ -19,7 +19,7 @@ jobs:
       fail-fast: false  # Don't cancel other jobs if one fails
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.10.17"]  # Using a specific version compatible with Ubuntu 24.04
+        python-version: ["3.10.11"]  # Version compatible with Ubuntu 24.04, Windows, and macOS arm64
 
     steps:
       - name: Checkout code
