@@ -6,13 +6,10 @@ This module provides a graphical user interface for the ShiftPlan to ICS convert
 """
 
 import os
-import sys
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox, scrolledtext
-from pathlib import Path
 from io import StringIO
 from contextlib import redirect_stdout
-from datetime import datetime
 
 from src.parser import parse_shifts
 from src.ics_generator import generate_ics
@@ -21,7 +18,7 @@ from src.widgets import MultiSelectFrame
 from src.settings_dialog import SettingsDialog
 from src.nextcloud_integration import sync_with_nextcloud
 from src.config import (
-    get_nextcloud_settings, save_nextcloud_settings,
+    get_nextcloud_settings,
     get_output_dir, save_output_dir,
     get_appearance_settings
 )

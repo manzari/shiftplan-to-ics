@@ -5,10 +5,10 @@ This module provides functions to create ICS calendar files from Shift objects.
 """
 
 import os
-from typing import List, Optional
+from typing import List
 from datetime import datetime, timedelta
 import pytz
-from icalendar import Calendar, Event, Alarm, vDatetime
+from icalendar import Calendar, Event, Alarm
 from src.parser import Shift
 
 # Default timezone for events

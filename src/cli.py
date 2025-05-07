@@ -7,7 +7,6 @@ This module provides command-line interface functionality.
 import os
 import sys
 import argparse
-from datetime import datetime
 
 from src.parser import parse_shifts
 from src.ics_generator import generate_ics
