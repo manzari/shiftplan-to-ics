@@ -434,7 +434,7 @@ class ShiftPlanGUI:
             reminder_names = self.reminder_frame.get_selected_items()
             captured_output = StringIO()
             with redirect_stdout(captured_output):
-                output_file = generate_ics(shifts_to_use, output_file, reminder_names)
+                output_file = generate_ics(shifts_to_use, output_file, reminder_names, all_shifts=self.shifts)
             
             # Display any captured output (warnings, etc.)
             captured_text = captured_output.getvalue()
@@ -699,7 +699,8 @@ class ShiftPlanGUI:
             reminder_names = self.reminder_frame.get_selected_items()
             captured_output = StringIO()
             with redirect_stdout(captured_output):
-                output_file = generate_ics(shifts_to_use, output_file, reminder_names)
+                # Pass both shifts_to_use (filtered shifts) and self.shifts (all shifts)
+                output_file = generate_ics(shifts_to_use, output_file, reminder_names, all_shifts=self.shifts)
             
             # Display any captured output (warnings, etc.)
             captured_text = captured_output.getvalue()

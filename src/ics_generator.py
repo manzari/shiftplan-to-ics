@@ -14,14 +14,15 @@ from src.parser import Shift
 # Default timezone for events
 DEFAULT_TIMEZONE = pytz.timezone('Europe/Berlin')
 
-def generate_ics(shifts: List[Shift], output_file: str, reminder_names: List[str] = None) -> str:
+def generate_ics(shifts: List[Shift], output_file: str, reminder_names: List[str] = None, all_shifts: List[Shift] = None) -> str:
     """
     Generate an ICS file from a list of shifts.
     
     Args:
-        shifts: List of Shift objects
+        shifts: List of Shift objects to include in the calendar
         output_file: Path to the output file
         reminder_names: Optional list of names to add reminders for (default: None)
+        all_shifts: Optional list of all shifts for overlap detection (default: None, will use shifts parameter)
         
     Returns:
         Path to the generated ICS file
@@ -36,10 +37,12 @@ def generate_ics(shifts: List[Shift], output_file: str, reminder_names: List[str
     cal.add('method', 'PUBLISH')
     cal.add('x-wr-timezone', 'Europe/Berlin')
     
+    shifts_for_overlap = all_shifts if all_shifts is not None else shifts
+    
     # Add each shift as an event
     for shift in shifts:
         # Pass all shifts to create_event for overlap checking
-        event = create_event(shift, reminder_names, all_shifts=shifts)
+        event = create_event(shift, reminder_names, shifts_for_overlap)
         cal.add_component(event)
     
     # Write to file

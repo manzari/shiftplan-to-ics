@@ -220,7 +220,7 @@ def process_files(args):
     
     try:
         # Generate ICS file
-        generate_ics(shifts_to_use, output_file, args.reminders)
+        generate_ics(shifts_to_use, output_file, args.reminders, all_shifts=all_shifts)
         print(f"Successfully created calendar file: {output_file}")
         print(f"Found and processed {len(shifts_to_use)} shifts spanning {len(set(shift.date for shift in shifts_to_use))} days")
         
