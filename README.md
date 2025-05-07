@@ -6,7 +6,7 @@ A Python tool to convert text-based schedules (shift plans) in German format int
 
 ## Installation for users
 
-1. Go to the [Releases](https://github.com/your-username/shiftplan-to-ics/releases) page of this repository.
+1. Go to the "Releases" page of this repository.
 
 2. Download the appropriate file for your operating system from the latest release:
    - **Windows**: Download `shiftplan_to_ics.exe`
